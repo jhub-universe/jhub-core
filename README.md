@@ -37,7 +37,7 @@ To see the types, mutations, queries and more, access `localhost:http://localhos
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/jhub-universe/jhub-core/tags). 
 
 ## Authors
 
