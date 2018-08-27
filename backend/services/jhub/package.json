@@ -1,0 +1,38 @@
+{
+  "name": "jhub-service",
+  "contributors": [
+    "Italo Jose <italo.i@live.com>",
+    "Caio Delgado <caiodelgado.csd@gmail.com>",
+    "Rogério Munhoz <rogerio.j.munhoz@gmail.com>"
+  ],
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": [
+    "node >= 10.1.0",
+    "npm >= 6.0.1",
+    "pnpm >= 2.0.0"
+  ],
+  "scripts": {
+    "lint": "standard --global after --global afterEach --global before --global beforeEach --global context --global describe --global it",
+    "start:debug": "DEBUG=jhub-servicer:*,thanos:* nodemon --watch app --watch config.js bin/www",
+    "start": "node bin/www",
+    "test": "mocha test --async-only --check-leaks --full-trace --recursive --throw-deprecation"
+  },
+  "dependencies": {
+    "@shawee/thanos": "^0.1.1",
+    "axios": "^0.18.0",
+    "express-rescue": "^1.0.11",
+    "lodash": "^4.17.5",
+    "lodash.merge": "^4.6.1",
+    "mongoose": "^5.0.3",
+    "sugar-env": "^1.4.0"
+  },
+  "devDependencies": {
+    "axiosist": "^0.1.0",
+    "chai": "^4.1.2",
+    "mocha": "^5.0.4",
+    "nodemon": "^1.17.1",
+    "sinon": "^4.4.6",
+    "standard": "^10.0.3"
+  }
+}

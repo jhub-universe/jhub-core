@@ -33,7 +33,6 @@ yarn
 ``` shell
 yarn start
 ```
-To see the types, mutations, queries and more, access `http://localhost:port/graphiql`
 
 ## Versioning
 
