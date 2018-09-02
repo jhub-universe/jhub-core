@@ -7,21 +7,18 @@ const merge = require('lodash.merge')
  * Models
  * ======
  */
-const PlanetModel = require('./models/planet')
 const ProfileModel = require('./models/profile')
 
 /**
  * Repositories
  * ============
  */
-const PlanetRepository = require('./repositories/planet')
 const ProfileRepository = require('./repositories/profile')
 
 /**
  * Storages
  * ========
  */
-const PlanetStorage = require('./storages/planet')
 const ProfileStorage = require('./storages/profile')
 
 /**
@@ -51,18 +48,14 @@ const factory = (config) => {
   const connection = mongoose.createConnection(uri, options)
 
   const models = {
-    Planet: PlanetModel.factory(connection),
     Profile: ProfileModel.factory(connection),
   }
 
-  // REFAC: Send to User and Planet repository only the specific model
   const repositories = {
-    Planet: new PlanetRepository(models.Planet),
     Profile: new ProfileRepository(models.Profile)
   }
 
   const storages = {
-    Planet: new PlanetStorage(models.Planet),
     Profile: new ProfileStorage(models.Profile)
   }
 
