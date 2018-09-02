@@ -1,12 +1,59 @@
 'use strict'
 
 const { Schema } = require('mongoose')
-const User = require('./user')
 const Planet = require('./planet')
 
 const properties = {
   user: {
-    type: User,
+    type: {
+      nickName: {
+        type: String,
+        required: true,
+      },
+      name: {
+        type: {
+          first: {
+            type: String,
+            required: true,
+          },
+          last: {
+            type: String,
+            required: true,
+          },
+        },
+        required: true,
+      },
+      email: {
+        type: Strnameing,
+        required: true,
+      },
+      showEmail: {
+        type: Boolean,
+        required: true,
+        default: () => false,
+      },
+      aboutMe: {
+        type: String,
+        required: true,
+        default: () => null,
+      },
+      webSite:{
+        type: String,
+        required: true,
+        default: () => null
+      },
+      work: {
+        type: String,
+        required: true,
+        default: () => null,
+      },
+      // REFAC: Add a enum to accept only the wold countries
+      country: {
+        type: String,
+        required: true,
+        default: () => null,
+      }
+    },
     required: true
   },
   followers: [{
@@ -69,7 +116,12 @@ const properties = {
     type: Date,
     required: true,
     default: () => null,
-  }
+  },
+  CreatedAt: {
+    type: Date,
+    required: true,
+    default: () => null,
+  },
 }
 
 const options = {

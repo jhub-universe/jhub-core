@@ -3,6 +3,7 @@
 const { Schema } = require('mongoose')
 const User = require('./user')
 
+// TODO: move this file and the user file to a specific path
 // REFAC: get it from the datase or a enum type
 const enums = {
     framworks: [

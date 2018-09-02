@@ -1,5 +1,7 @@
 'use strict'
 
+const { pick } = require('lodash')
+
 class PlanetStorage {
   /**
    * @param {Object} model Planet model.
@@ -14,6 +16,21 @@ class PlanetStorage {
    * @returns {Promise<Object>}
    */
   async create (params) {
+    const profile = pick(params, [
+      'user.nickName',
+      'user.name.first',
+      'user.name.last',
+      'user.email',
+      'user.showEmail',
+      'user.aboutMe',
+      'user.webSite',
+      'user.work',
+      'user.country',
+    ])
+    profile.followers = []
+    profile.following = []
+    // TODO: create an example planet
+    profile.planets = []
     return this.$model.create(params)
                        .then(document => document.toObject())
   }
