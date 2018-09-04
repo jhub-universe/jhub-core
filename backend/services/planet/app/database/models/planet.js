@@ -1,7 +1,6 @@
 'use strict'
 
 const { Schema } = require('mongoose')
-const User = require('./user')
 
 // TODO: move this file and the user file to a specific path
 // REFAC: get it from the datase or a enum type
@@ -51,20 +50,25 @@ const simpleType = {
 }
 // REFAC: get it from a other file
 const complexyType = {
-    openedBy: {
-        userId: {
-            type: [ {userId: Schema.Types.ObjectId }],
+    openedBy:{
+        users: {
+            type: [ { 
+                id: Schema.Types.ObjectId,
+                atDate: simpleType.atDate  
+            }],
             required: true,
         },
-        atDate: simpleType.atDate,
         count: simpleType.count
     },
-    stared: {
-        user: {
-            type: User,
+    staredBy: {
+        users: {
+            type: [ { 
+                id: Schema.Types.ObjectId,
+                atDate: simpleType.atDate  
+            }],
             required: true,
         },
-        atDate: simpleType.atDate
+        count: simpleType.count
     },
     jupyterNotebook: {
         link: {
@@ -94,8 +98,8 @@ const properties = {
     type: String,
     required: true,
   },
-  stared: {
-      type: [ complexyType.stared ],
+  staredBy: {
+      type: [ complexyType.staredBy ],
       required: true,
       default: () => 0
   },
