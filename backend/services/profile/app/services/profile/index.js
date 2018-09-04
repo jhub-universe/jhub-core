@@ -7,6 +7,7 @@ const MissingProperty = require('./errors/missing-property-error')
 const InvalidEmailError = require('./errors/invalid-email-error')
 
 const DEFAULT_PAGINATION_LIMIT = 50
+
 class ProfileService {
   /**
    * @param {Object}  storage    Storages instances.
@@ -22,19 +23,20 @@ class ProfileService {
    * @param  {Object} provider profile object
    * @return {Object}          created object
    */
-  async create (provider) {
+  async create (user) {
+    console.log(user)
     // TODO: nickName is unique (role)
-    // TODO: add a chain of resposabilities patterns here
-    if (provider.name.first && provider.name.last){
-      throw new MissingProperty('name or last name')
+    // REFAC: add a chain of resposabilities patterns here
+    if (!user.name.first || !user.name.last){
+      throw new MissingProperty('first name or last name')
     }
-    if (!provider.email) {
+    if (!user.email) {
       throw new MissingProperty('e-mail')
     }
-    if (Validator.validate(provider.email)){
-      throw new InvalidEmailError(provider.email)
+    if (!Validator.validate(user.email)){
+      throw new InvalidEmailError(user.email)
     }
-    return this.$storage.create(provider)
+    return this.$storage.create(user)
   }
 
   /**

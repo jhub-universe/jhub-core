@@ -1,6 +1,6 @@
 'use strict'
 
-const { Error } = require('@shawee/thanos')
+const { Error } = require('@italojs/bigbang-rest')
 
 class BaseError extends Error {
   //

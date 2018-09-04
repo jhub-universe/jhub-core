@@ -2,7 +2,7 @@
 
 const routes = require('./routes')
 const database = require('./database')
-const thanos = require('@shawee/thanos')
+const bigbang = require('@italojs/bigbang-rest')
 const ProfileService = require('./services/profile')
 
 /**
@@ -10,7 +10,7 @@ const ProfileService = require('./services/profile')
  * @param  {Object} api                 Express instance.
  * @param  {Object} options.config      Application configs.
  */
-module.exports = thanos((api, config) => {
+module.exports = bigbang((api, config) => {
   const { repositories, storages } = database.factory(config.mongodb)
 
   const profileService = new ProfileService(storages.profile, repositories.profile)

@@ -1,7 +1,7 @@
 'use strict'
 
 const rescue = require('express-rescue')
-const { HttpError } = require('@shawee/thanos')
+const { HttpError } = require('@italojs/bigbang-rest')
 
 const factory = (service) => ([
 

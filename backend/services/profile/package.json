@@ -1,9 +1,7 @@
 {
-  "name": "jhub-service",
+  "name": "svc-profile",
   "contributors": [
-    "Italo Jose <italo.i@live.com>",
-    "Caio Delgado <caiodelgado.csd@gmail.com>",
-    "Rogério Munhoz <rogerio.j.munhoz@gmail.com>"
+    "Italo Jose <italo.i@live.com>"
   ],
   "license": "UNLICENSED",
   "private": true,
@@ -14,12 +12,12 @@
   ],
   "scripts": {
     "lint": "standard --global after --global afterEach --global before --global beforeEach --global context --global describe --global it",
-    "start:debug": "DEBUG=jhub-servicer:*,thanos:* nodemon --watch app --watch config.js bin/www",
+    "start:debug": "DEBUG=svc-profile:*,bigbang-rest:* nodemon --watch app --watch config.js bin/www",
     "start": "node bin/www",
     "test": "mocha test --async-only --check-leaks --full-trace --recursive --throw-deprecation"
   },
   "dependencies": {
-    "@shawee/thanos": "^0.1.1",
+    "@italojs/bigbang-rest": "^0.2.2",
     "axios": "^0.18.0",
     "express-rescue": "^1.0.11",
     "lodash": "^4.17.5",
