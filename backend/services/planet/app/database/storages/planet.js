@@ -16,17 +16,9 @@ class PlanetStorage {
    * @returns {Promise<Object>}
    */
   async create (params) {
-    const profile = pick(params, [
-      'user.nickName',
-      'user.name.first',
-      'user.name.last',
-      'user.email',
-      'user.showEmail',
-      'user.aboutMe',
-      'user.webSite',
-      'user.work',
-      'user.country',
-    ])
+    // const profile = pick(params, [
+    //   // TODO
+    // ])
     profile.followers = []
     profile.following = []
     // TODO: create an example planet

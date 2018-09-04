@@ -3,7 +3,7 @@
 const cors = require('cors')
 const routes = require('./routes')
 const proxy = require('@mantris/proxy')
-const thanos = require('@shawee/thanos')
+const bigbang = require('@italojs/bigbang-rest')
 
 /**
  * Application setup.
@@ -11,7 +11,7 @@ const thanos = require('@shawee/thanos')
  * @param {Object} options.config      Application configs.
  * @param {String} options.environment Environment name.
  */
-module.exports = thanos((api, config, environment) => {
+module.exports = bigbang((api, config, environment) => {
   api.use(cors(config.cors))
 
   // api.get('/documents', jwt, scopes('documents.read'), routes.documents.search.factory(config.document))

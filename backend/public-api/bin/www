@@ -3,6 +3,6 @@
 
 const app = require('../app')
 const config = require('../config')
-const { server } = require('@shawee/thanos')
+const { server } = require('@italojs/bigbang-rest')
 
 server.start(app, config)

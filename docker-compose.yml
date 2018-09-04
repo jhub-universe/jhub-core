@@ -1,0 +1,62 @@
+version: '3.3'
+
+services:
+  mongodb:
+    image: mvertes/alpine-mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/db
+
+  vhost:
+    image: jwilder/nginx-proxy:alpine
+    ports:
+      - 80:80
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  ms-frameworks-libs:
+    build: backend/micro-services/frameworks-libs
+      - vhost
+    environment:
+      DEBUG: appify:*,ms-frameworks-libs:*
+      GIT_COMMIT: ${GIT_COMMIT}
+      GIT_RELEASE: ${GIT_RELEASE}
+      NODE_ENV: development
+      SENTRY_DSN: ${SENTRY_DSN}
+      SENTRY_TIMEOUT: ${SENTRY_TIMEOUT}
+      VIRTUAL_HOST: ms.framworkslibs.127.0.0.1.xip.io,api.framworkslibs.127.0.0.1.nip.io
+
+  svc-planet:
+    build: backend/services/planet
+    depends_on:
+      - mongodb
+      - vhost
+    environment:
+      DEBUG: appify:*,svc-planet:*
+      GIT_COMMIT: ${GIT_COMMIT}
+      GIT_RELEASE: ${GIT_RELEASE}
+      MONGODB_URI: mongodb://mongodb:27017/jhub
+      MONGODB_DBNAME: jhub
+      NODE_ENV: development
+      SENTRY_DSN: ${SENTRY_DSN}
+      SENTRY_TIMEOUT: ${SENTRY_TIMEOUT}
+      VIRTUAL_HOST: svc.planet.127.0.0.1.xip.io,campaign.svc.planet.127.0.0.1.nip.io
+
+  svc-profile:
+    build: backend/services/profile
+    depends_on:
+      - mongodb
+      - vhost
+    environment:
+      DEBUG: appify:*,svc-profile:*
+      GIT_COMMIT: ${GIT_COMMIT}
+      GIT_RELEASE: ${GIT_RELEASE}
+      MONGODB_URI: mongodb://mongodb:27017/jhub
+      MONGODB_DBNAME: jhub
+      NODE_ENV: development
+      SENTRY_DSN: ${SENTRY_DSN}
+      SENTRY_TIMEOUT: ${SENTRY_TIMEOUT}
+      VIRTUAL_HOST: svc.svc-profile.127.0.0.1.xip.io,campaign.svc.svc-profile.127.0.0.1.nip.io
+volumes:
+  mongodb:

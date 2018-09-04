@@ -6,7 +6,7 @@ const User = require('./user')
 // TODO: move this file and the user file to a specific path
 // REFAC: get it from the datase or a enum type
 const enums = {
-    framworks: [
+    frameworks: [
         'Caffe',
         'CNTK',
         'TORCH',
@@ -51,13 +51,11 @@ const simpleType = {
 }
 // REFAC: get it from a other file
 const complexyType = {
-    opened: {
-        by: [{
-            userId: {
-                type: Schema.Types.ObjectId,
-                required: true,
-            }
-        }],
+    openedBy: {
+        userId: {
+            type: [ {userId: Schema.Types.ObjectId }],
+            required: true,
+        },
         atDate: simpleType.atDate,
         count: simpleType.count
     },
@@ -97,10 +95,12 @@ const properties = {
     required: true,
   },
   stared: {
-      type: [ complexyType.stared ]
+      type: [ complexyType.stared ],
+      required: true,
+      default: () => 0
   },
-  opened: {
-    type: complexyType.opened,
+  openedBy: {
+    type: complexyType.openedBy,
     required: true,
     default: () => []
   },
@@ -123,10 +123,10 @@ const properties = {
     required: true,
     default: () => null,
   },
-  framworks: {
+  frameworks: {
       type: String,
       required: true,
-      enum: enums.framworks,
+      enum: enums.frameworks,
       default: () => 'nothing'
   },
   libs: {

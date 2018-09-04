@@ -13,11 +13,10 @@
   "scripts": {
     "lint": "standard --global after --global afterEach --global before --global beforeEach --global context --global describe --global it",
     "test": "mocha test --async-only --check-leaks --full-trace --recursive --throw-deprecation",
-    "start:debug": "DEBUG=thanos:*,public-api:* nodemon --watch app --watch config.js node bin/www",
+    "start:debug": "DEBUG=bigbang:*,public-api:* nodemon --watch app --watch config.js node bin/www",
     "start": "node bin/www"
   },
   "dependencies": {
-    "@shawee/thanos": "^0.1.1",
     "@mantris/proxy": "^1.3.4",
     "axios": "^0.18.0",
     "cors": "^2.8.4",
