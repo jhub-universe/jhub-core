@@ -1,6 +1,7 @@
 'use strict'
 
 const Error = require('./errors/error')
+const cleanDeep = require('clean-deep')
 const Validator = require('email-validator')
 const NotFoundError = require('./errors/not-found-error')
 const MissingProperty = require('./errors/missing-property-error')
@@ -24,7 +25,6 @@ class ProfileService {
    * @return {Object}          created object
    */
   async create (user) {
-    console.log(user)
     // TODO: nickName is unique (role)
     // REFAC: add a chain of resposabilities patterns here
     if (!user.name.first || !user.name.last){
@@ -60,10 +60,7 @@ class ProfileService {
   async search (params) {
     const {
       nickName = null,
-      name: {
-        first = null,
-        last = null
-      },
+      name = {},
       aboutMe = null,
       work = null,
       email = null,
@@ -71,27 +68,28 @@ class ProfileService {
       offset = 0,
       limit = DEFAULT_PAGINATION_LIMIT
     } = params
-
     const regexParam = (filter !== null) ? new RegExp(filter, 'i') : null
 
     const query = cleanDeep({
-      'nickName': nickName ? nickName : null,
-      'name.first': name.first ? name.first : null,
-      'name.last': name.last ? name.last : null,
-      'aboutMe': aboutMe ? aboutMe : null,
-      'work': work ? work : null,
-      'email': email ? email : null,
+      'user.nickName': nickName ? nickName : null,
+      'user.name.first': name.first ? name.first : null,
+      'user.name.last': name.last ? name.last : null,
+      'user.aboutMe': aboutMe ? aboutMe : null,
+      'user.work': work ? work : null,
+      'user.email': email ? email : null,
       $or: filter ? [
-        { 'nickName': regexParam },
-        { 'name.first': regexParam },
-        { 'name.last': regexParam },
-        { 'aboutMe': regexParam },
-        { 'work': regexParam },
-        { 'email': regexParam }
+        { 'user.nickName': regexParam },
+        { 'user.name.first': regexParam },
+        { 'user.name.last': regexParam },
+        { 'user.aboutMe': regexParam },
+        { 'user.work': regexParam },
+        { 'user.email': regexParam }
       ] : null
     })
 
     query.deletedAt = null
+
+    console.log(query)
 
     const profiles = await this.$repository.search(query, parseInt(offset), parseInt(limit))
 
@@ -102,7 +100,7 @@ class ProfileService {
       to: offset + count
     }
 
-    return providers
+    return profiles
   }
 }
 

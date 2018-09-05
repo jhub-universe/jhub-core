@@ -115,13 +115,13 @@ const properties = {
   },
   deletedAt: {
     type: Date,
-    required: true,
+    required: false,
     default: () => null,
   },
   createdAt: {
     type: Date,
-    required: true,
-    default: () => null,
+    required: false,
+    default: () => Date.now(),
   },
 }
 

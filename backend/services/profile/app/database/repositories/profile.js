@@ -15,9 +15,11 @@ class ProfileRepository {
  * @returns {Promise<Object>}
  */
   async findByNickName (nickName) {
-    return this.$model.find({ 'user.nickName': nickName })
-                      .limit(1)
-                      .lean()
+    // find with limit = 1 is faster than findOne
+    const profile = await this.$model.find({ 'user.nickName': nickName })
+                                     .limit(1)
+                                     .lean()
+    return profile[0]
   }
 
   /** Find profiles by a criteria
@@ -25,7 +27,7 @@ class ProfileRepository {
    */
   async search (query, offset, limit) {
     const total = await this.$model.count(query)
-
+    
     if (total === 0) {
       return { data: [], total: 0 }
     }

@@ -13,7 +13,7 @@ const ProfileService = require('./services/profile')
 module.exports = bigbang((api, config) => {
   const { repositories, storages } = database.factory(config.mongodb)
 
-  const profileService = new ProfileService(storages.profile, repositories.profile)
+  const profileService = new ProfileService(storages.Profile, repositories.Profile)
 
   api.post('/', routes.profile.create.factory(profileService))
   api.get('/', routes.profile.search.factory(profileService))

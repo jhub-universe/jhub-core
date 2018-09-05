@@ -19,6 +19,7 @@
   "dependencies": {
     "@italojs/bigbang-rest": "^0.2.2",
     "axios": "^0.18.0",
+    "clean-deep": "^3.0.2",
     "express-rescue": "^1.0.11",
     "lodash": "^4.17.5",
     "lodash.merge": "^4.6.1",

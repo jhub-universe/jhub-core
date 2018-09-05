@@ -6,7 +6,7 @@ const { HttpError } = require('@italojs/bigbang-rest')
 const factory = (service) => ([
 
   rescue(async (req, res) => {
-    const result = await service.findByNickName(req.nickName)
+    const result = await service.findByNickName(req.params.nickName)
 
     res.status(200)
        .json(result)
