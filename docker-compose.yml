@@ -17,6 +17,7 @@ services:
 
   ms-frameworks-libs:
     build: backend/micro-services/frameworks-libs
+    depends_on:
       - vhost
     environment:
       DEBUG: appify:*,ms-frameworks-libs:*
