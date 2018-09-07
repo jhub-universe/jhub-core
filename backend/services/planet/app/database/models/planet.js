@@ -33,8 +33,8 @@ const enums = {
         'Scikit-learn',
         'Eli5',
         'nothing'
-    ] 
-} 
+    ]
+}
 // REFAC: get it from a other file
 const simpleType = {
     atDate: {
@@ -52,9 +52,9 @@ const simpleType = {
 const complexyType = {
     openedBy:{
         users: {
-            type: [ { 
+            type: [ {
                 id: Schema.Types.ObjectId,
-                atDate: simpleType.atDate  
+                atDate: simpleType.atDate
             }],
             required: true,
         },
@@ -62,9 +62,9 @@ const complexyType = {
     },
     staredBy: {
         users: {
-            type: [ { 
+            type: [ {
                 id: Schema.Types.ObjectId,
-                atDate: simpleType.atDate  
+                atDate: simpleType.atDate
             }],
             required: true,
         },
@@ -97,6 +97,10 @@ const properties = {
   name: {
     type: String,
     required: true,
+  },
+  profileId: {
+    type: Schema.Types.ObjectId,
+    required: true
   },
   staredBy: {
       type: [ complexyType.staredBy ],

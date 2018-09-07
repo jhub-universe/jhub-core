@@ -18,6 +18,7 @@ class PlanetStorage {
   async create (params) {
     const planet = pick(params, [
         'name',
+        'profileId',
         'jupyterNotebook.link',
         'jupyterNotebook.size',
         'jupyterNotebook.imageURL',
@@ -38,7 +39,7 @@ class PlanetStorage {
     }
     planet.views = 0
     planet.deletedAt = null
-    
+
     return this.$model.create(planet)
                        .then(document => document.toObject())
   }
