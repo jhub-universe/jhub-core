@@ -2,6 +2,7 @@ dependencies:
   '@italojs/bigbang-rest': 0.2.2
   axios: 0.18.0
   clean-deep: 3.0.2
+  email-validator: 2.0.4
   express-rescue: 1.0.11
   lodash: 4.17.10
   lodash.merge: 4.6.1
@@ -1004,6 +1005,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
+  /email-validator/2.0.4:
+    dev: false
+    engines:
+      node: '>4.0'
+    resolution:
+      integrity: sha512-gYCwo7kh5S3IDyZPLZf6hSS0MnZT8QmJFqYvbqlDZSbwdZlY6QZWxJ4i/6UhITOJ4XzyI647Bm2MXKCLqnJ4nQ==
   /encodeurl/1.0.2:
     dev: false
     engines:
@@ -4191,6 +4198,7 @@ specifiers:
   axiosist: ^0.1.0
   chai: ^4.1.2
   clean-deep: ^3.0.2
+  email-validator: ^2.0.4
   express-rescue: ^1.0.11
   lodash: ^4.17.5
   lodash.merge: ^4.6.1
