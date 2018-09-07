@@ -53,11 +53,11 @@ const factory = (config) => {
 
   // REFAC: Send to User and Planet repository only the specific model
   const repositories = {
-    Planet: new PlanetRepository(models.Planet),
+    planet: new PlanetRepository(models.Planet),
   }
 
   const storages = {
-    Planet: new PlanetStorage(models.Planet),
+    planet: new PlanetStorage(models.Planet),
   }
 
   return { repositories, storages }

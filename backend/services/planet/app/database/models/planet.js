@@ -141,7 +141,7 @@ const properties = {
   },
   deletedAt: {
     type: Date,
-    required: true,
+    required: false,
     default: () => null,
   }
 }
