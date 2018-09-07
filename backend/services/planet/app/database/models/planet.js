@@ -50,16 +50,6 @@ const simpleType = {
 }
 // REFAC: get it from a other file
 const complexyType = {
-    openedBy:{
-        users: {
-            type: [ {
-                id: Schema.Types.ObjectId,
-                atDate: simpleType.atDate
-            }],
-            required: true,
-        },
-        count: simpleType.count
-    },
     staredBy: {
         users: {
             type: [ {
@@ -107,24 +97,15 @@ const properties = {
       required: true,
       default: () => 0
   },
-  openedBy: {
-    type: complexyType.openedBy,
-    required: true,
-    default: () => []
-  },
   jupyterNotebook: {
       type: complexyType.jupyterNotebook,
       required: true,
   },
-  views: {
-    type: Number,
-    required: true,
-    default: () => 0,
-  },
-  isPublic: {
-      type: Boolean,
+  type: {
+      type: String,
       required: true,
-      default: () => false
+      default: () => false,
+      enum: ['private', 'public']
   },
   description: {
     type: String,
