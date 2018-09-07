@@ -1,4 +1,4 @@
 packages:
-  - 'backend/api'
-  - 'backend/microservices/*'
+  - 'backend/micro-services/*'
   - 'backend/services/*'
+  - 'backend/public-api'

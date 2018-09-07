@@ -1,6 +1,7 @@
 dependencies:
   '@italojs/bigbang-rest': 0.2.2
   axios: 0.18.0
+  clean-deep: 3.0.2
   email-validator: 2.0.4
   express-rescue: 1.0.11
   lodash: 4.17.10
@@ -626,6 +627,16 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-qOhPa/Fj7s6TY8H8esGu5QNpMMQxz79h+urzrNYN6mn+9BnxlDGf5QZ+XeCDsxSjPqsSR56XOZOJmpeurnLMeg==
+  /clean-deep/3.0.2:
+    dependencies:
+      lodash.isempty: 4.4.0
+      lodash.isplainobject: 4.0.6
+      lodash.transform: 4.6.0
+    dev: false
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha512-sLUtFxYtHc3jM9pmwyYXOLln0nnQ1OhFrefQ7nqUlva1crHDbi4gVO+nnMSm5jztFXIRDMt+kMNh0mOscbARow==
   /cli-boxes/1.0.0:
     dev: true
     engines:
@@ -698,10 +709,6 @@ packages:
     dev: true
     resolution:
       integrity: sha512-VlfT9F3V0v+jr4yxPc5gg9s62/fIVWsd2Bk2iD435um1NlGMYdVCq+MjcXnhYq2icNOizHr1kK+5TI6H0Hy0ag==
-<<<<<<< HEAD
-=======
-      tarball: 'http://registry.npmjs.org/commander/-/commander-2.15.1.tgz'
->>>>>>> origin/master
   /component-emitter/1.2.1:
     dev: true
     resolution:
@@ -998,15 +1005,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
-<<<<<<< HEAD
-=======
   /email-validator/2.0.4:
     dev: false
     engines:
       node: '>4.0'
     resolution:
       integrity: sha512-gYCwo7kh5S3IDyZPLZf6hSS0MnZT8QmJFqYvbqlDZSbwdZlY6QZWxJ4i/6UhITOJ4XzyI647Bm2MXKCLqnJ4nQ==
->>>>>>> origin/master
   /encodeurl/1.0.2:
     dev: false
     engines:
@@ -2482,10 +2486,22 @@ packages:
   /lodash.get/4.4.2:
     resolution:
       integrity: sha1-LRd/ZS+jHpObRDjVNBSZ36OCXpk=
+  /lodash.isempty/4.4.0:
+    dev: false
+    resolution:
+      integrity: sha1-b4bL7di+TsmHvpqvM8loTbGzHn4=
+  /lodash.isplainobject/4.0.6:
+    dev: false
+    resolution:
+      integrity: sha1-fFJqUtibRcRcxpC4gWO+BJf1UMs=
   /lodash.merge/4.6.1:
     dev: false
     resolution:
       integrity: sha512-AOYza4+Hf5z1/0Hztxpm2/xiPZgi/cjMqdnKTUWTBSKchJlxXXuUSxCCl8rJlf4g6yww/j6mA8nC8Hw/EZWxKQ==
+  /lodash.transform/4.6.0:
+    dev: false
+    resolution:
+      integrity: sha1-EjBkIvYzJK7YSD0/ODMrX2cFR6A=
   /lodash/4.17.10:
     resolution:
       integrity: sha512-UejweD1pDoXu+AD825lWwp4ZGtSwgnpZxb3JDViD7StjQz+Nb/6l093lx4OQ0foGWNRoc19mWy7BzL+UAK2iVg==
@@ -4181,10 +4197,8 @@ specifiers:
   axios: ^0.18.0
   axiosist: ^0.1.0
   chai: ^4.1.2
-<<<<<<< HEAD
-=======
+  clean-deep: ^3.0.2
   email-validator: ^2.0.4
->>>>>>> origin/master
   express-rescue: ^1.0.11
   lodash: ^4.17.5
   lodash.merge: ^4.6.1
