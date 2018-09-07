@@ -22,9 +22,8 @@ class PlanetService {
    * @param  {Object} provider planet object
    * @return {Object}          created object
    */
-  async create (provider) {
-    // TODO: Apply validation
-    return this.$storage.create(provider)
+  async create (planet) {
+    return this.$storage.create(planet)
   }
 
   /**

@@ -128,15 +128,15 @@ const properties = {
     default: () => null,
   },
   frameworks: {
-      type: String,
+      type: [String],
       required: true,
-      enum: enums.frameworks,
+      // enum: enums.frameworks,
       default: () => 'nothing'
   },
   libs: {
     type: String,
     required: true,
-    enum: enums.libs,
+    // enum: enums.libs,
     default: () => 'nothing'
   },
   deletedAt: {

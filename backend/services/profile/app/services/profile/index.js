@@ -26,13 +26,6 @@ class ProfileService {
    */
   async create (user) {
     // TODO: nickName is unique (role)
-    // REFAC: add a chain of resposabilities patterns here
-    if (!user.name.first || !user.name.last){
-      throw new MissingProperty('first name or last name')
-    }
-    if (!user.email) {
-      throw new MissingProperty('e-mail')
-    }
     if (!Validator.validate(user.email)){
       throw new InvalidEmailError(user.email)
     }
