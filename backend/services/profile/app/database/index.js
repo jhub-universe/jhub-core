@@ -33,7 +33,8 @@ const DEFAULT_OPTIONS = {
   bufferMaxEntries: 0,
   bufferCommands: false,
   reconnectInterval: 500,
-  promiseLibrary: Promise
+  promiseLibrary: Promise,
+  userNewUrlParser: true
 }
 
 /**
