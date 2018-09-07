@@ -6,7 +6,6 @@ const NotFoundError = require('./errors/not-found-error')
 const MissingProperty = require('./errors/missing-property-error')
 const InvalidEmailError = require('./errors/invalid-email-error')
 
-const DEFAULT_PAGINATION_LIMIT = 50
 class PlanetService {
   /**
    * @param {Object}  storage    Storages instances.
@@ -32,44 +31,7 @@ class PlanetService {
    * @return {Object}
    */
   async search (params) {
-    const {
-      name = null,
-      needGPU = null,
-      description = null,
-      frameworks = [],
-      libs = [],
-      filter = null,
-      offset = 0,
-      limit = DEFAULT_PAGINATION_LIMIT
-    } = params
-
-    const regexParam = (filter !== null) ? new RegExp(filter, 'i') : null
-
-    const query = cleanDeep({
-      'name': name ? nickName : null,
-      'needGPU': needGPU ? needGPU : null,
-      'description': description ? description : null,
-      'frameworks': frameworks ? { $in: frameworks } : null,
-      'libs': libs ? { $in: libs } : null,
-      $or: filter ? [
-        { 'name': regexParam },
-        { 'needGPU': regexParam },
-        { 'description': regexParam }
-      ] : null
-    })
-
-    query.deletedAt = null
-
-    const profiles = await this.$repository.search(query, parseInt(offset), parseInt(limit))
-
-    const count = profiles.length
-
-    profiles.range = {
-      from: offset,
-      to: offset + count
-    }
-
-    return providers
+    return this.$repository.search(params)
   }
 }
 
