@@ -38,6 +38,7 @@ class PlanetStorage {
     }
     planet.views = 0
     planet.deletedAt = null
+    
     return this.$model.create(planet)
                        .then(document => document.toObject())
   }
