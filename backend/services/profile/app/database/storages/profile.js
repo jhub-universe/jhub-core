@@ -29,8 +29,7 @@ class ProfileStorage {
         'country',
       ]),
       followers: [],
-      following: [],
-      planets: []
+      following: []
     }
     // TODO: create an example planet when create a new profile
     return this.$model.create(profile)
@@ -38,4 +37,4 @@ class ProfileStorage {
   }
 }
 
-module.exports =  ProfileStorage 
+module.exports =  ProfileStorage

@@ -33,8 +33,8 @@ const enums = {
         'Scikit-learn',
         'Eli5',
         'nothing'
-    ] 
-} 
+    ]
+}
 // REFAC: get it from a other file
 const simpleType = {
     atDate: {
@@ -50,21 +50,11 @@ const simpleType = {
 }
 // REFAC: get it from a other file
 const complexyType = {
-    openedBy:{
-        users: {
-            type: [ { 
-                id: Schema.Types.ObjectId,
-                atDate: simpleType.atDate  
-            }],
-            required: true,
-        },
-        count: simpleType.count
-    },
     staredBy: {
         users: {
-            type: [ { 
+            type: [ {
                 id: Schema.Types.ObjectId,
-                atDate: simpleType.atDate  
+                atDate: simpleType.atDate
             }],
             required: true,
         },
@@ -98,29 +88,24 @@ const properties = {
     type: String,
     required: true,
   },
+  profileId: {
+    type: Schema.Types.ObjectId,
+    required: true
+  },
   staredBy: {
       type: [ complexyType.staredBy ],
       required: true,
       default: () => 0
   },
-  openedBy: {
-    type: complexyType.openedBy,
-    required: true,
-    default: () => []
-  },
   jupyterNotebook: {
       type: complexyType.jupyterNotebook,
       required: true,
   },
-  views: {
-    type: Number,
-    required: true,
-    default: () => 0,
-  },
-  isPublic: {
-      type: Boolean,
+  type: {
+      type: String,
       required: true,
-      default: () => false
+      default: () => false,
+      enum: ['private', 'public']
   },
   description: {
     type: String,

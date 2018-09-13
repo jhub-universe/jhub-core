@@ -89,30 +89,6 @@ const properties = {
       default: Date.now()
     }
   }],
-  planets: {
-    type: [{
-      PlanetId: {
-        type: Schema.Types.ObjectId,
-        required: true,
-      },
-      name: {
-        type: String,
-        required: true,
-      },
-      stared: {
-        type: Number,
-        required: true,
-        default: () => 0
-      },
-      imageURL: {
-        type: String,
-        required: false,
-        default: () => null
-      }
-    }],
-    required: true,
-    default: () => [],
-  },
   deletedAt: {
     type: Date,
     required: false,
