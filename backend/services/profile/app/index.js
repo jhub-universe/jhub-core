@@ -15,8 +15,9 @@ module.exports = bigbang((api, config) => {
 
   const profileService = new ProfileService(storages.Profile, repositories.Profile)
 
-  api.post('/', routes.profile.create.factory(profileService))
   api.get('/', routes.profile.search.factory(profileService))
+  api.post('/', routes.profile.create.factory(profileService))
+  api.put('/:profile/following/:following', routes.following.create.factory(profileService))
   api.get('/:nickName', routes.profile.findByNickName.factory(profileService))
   
 })

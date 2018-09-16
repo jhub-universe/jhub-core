@@ -46,6 +46,26 @@ class ProfileService {
   }
 
   /**
+   * Add a following user to this profile
+   * @param  {String} nickName user nickname
+   * @return {Object}          property nickName
+   */
+  async addFollowing (profileId, followingId) {
+    const fProfileObj = await this.$repository.findById(followingId)
+    if (!fProfileObj) {
+      throw new NotFoundError('profile', followingId, '_id' )
+    }
+
+    const profileObj = await this.$repository.findById(profileId)
+    if (!profileObj) {
+      throw new NotFoundError('profile', profileId, '_id' )
+    }
+    // TODO: do i need a validation?
+    await this.$storage.addFollowing(profileId, fProfileObj)
+    await this.$storage.addFollower(followingId, profileObj)
+  }
+
+  /**
    * search profile.
    * @param  {Object} filter filter to search a profile
    * @return {Object}

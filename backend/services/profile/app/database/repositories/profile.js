@@ -16,12 +16,24 @@ class ProfileRepository {
  */
   async findByNickName (nickName) {
     // find with limit = 1 is faster than findOne
-    const profile = await this.$model.find({ 'user.nickName': nickName })
+    const profiles = await this.$model.find({ 'user.nickName': nickName })
                                      .limit(1)
                                      .lean()
-    return profile[0]
+    return profiles[0]
   }
 
+   /**
+   * Find by id property.
+   * @function
+   * @returns {Promise<Object>}
+   */
+  async findById (id) {
+    // find with limit = 1 is faster than findOne
+    const profiles = await this.$model.find({ _id: id })
+                                    .limit(1)
+                                    .lean()
+    return profiles[0]
+  }
   /** Find profiles by a criteria
    * @param {Object} query Object containing search criteria to filter
    */

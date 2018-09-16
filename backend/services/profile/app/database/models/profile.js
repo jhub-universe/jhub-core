@@ -58,7 +58,7 @@ const properties = {
     required: true
   },
   followers: [{
-    profileId: {
+    _id: {
       type: Schema.Types.ObjectId,
       required: true,
       ref: 'profile'
@@ -69,12 +69,12 @@ const properties = {
     },
     followedDate:{
       type: Date,
-      required: true,
+      required: false,
       default: Date.now()
     }
   }],
   following: [{
-    profileId: {
+    _id: {
       type: Schema.Types.ObjectId,
       required: true,
       ref: 'profile'
@@ -85,7 +85,7 @@ const properties = {
     },
     followedDate:{
       type: Date,
-      required: true,
+      required: false,
       default: Date.now()
     }
   }],
